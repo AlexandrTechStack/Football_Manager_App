@@ -3,11 +3,11 @@ const userRouter = express.Router()
 const UserController = require('../controllers/user.controller')
 
 
-userRouter.get("/", UserController.GetRouter)
-userRouter.get("/:id", UserController.GetByIdRouter)
-userRouter.post("/:id", UserController.PostRouter)
-userRouter.put("/:id", UserController.UpdateRouter)
-userRouter.delete("/:id", UserController.DeleteRouter)
+userRouter.get("/", UserController.Get)
+userRouter.get("/:id", UserController.GetById)
+userRouter.post("/:id", UserController.Post)
+userRouter.put("/:id", UserController.Update)
+userRouter.delete("/:id", UserController.Delete)
 
 module.exports = userRouter
 

@@ -1,6 +1,11 @@
 const Controller = require('./controller')
 const UserBl = require('../services/bl.service/user.bl')
 
-let UserController = new Controller(UserBl)
+class UserController extends Controller{
+    constructor() {
+        super(UserBl);
+    }
+
+}
 
 module.exports =  UserController

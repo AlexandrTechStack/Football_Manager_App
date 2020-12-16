@@ -1,12 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const UserController = require('../controllers/user.controller')
+
+router.post('/signup', UserController.NewUser)
 
 
-/*router.get('/login', (req, res) => {
-    res.send('login')
-})
- */
 //Local
 router.get('/login', passport.authenticate('local', {
     scope: ['profile']
@@ -23,6 +22,10 @@ router.get('/logout', (req, res) => {
     req.logout()
     res.redirect('/')
 })
+
+
+
+
 
 
 //Google

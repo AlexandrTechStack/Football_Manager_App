@@ -1,6 +1,11 @@
 const BaseBl = require('./base.bl')
 const UserRepository = require('../../repository/user.repository')
 
-let UserBl = new BaseBl(UserRepository)
+class UserBl extends BaseBl{
+    constructor() {
+        super(UserRepository);
+    }
+
+}
 
 module.exports = UserBl

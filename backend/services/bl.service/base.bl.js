@@ -4,20 +4,20 @@ class BaseBl {
         this.repository = repository
     }
 
-    GetMethod = () => {
-        this.repository.getAllItem()
+    Get = () => {
+       return this.repository.getAllItem()
     }
-    GetByIdMethod = () => {
-        this.repository.getByIdItem()
+    GetById = (id) => {
+       return this.repository.getByIdItem(id)
     }
-    PostMethod = () => {
-        this.repository.postItem()
+    Post = (body) => {
+       return this.repository.postItem(body)
     }
-    UpdateMethod = () => {
-        this.repository.updateItem()
+    Update = (body, id) => {
+       return this.repository.updateItem(body, id)
     }
-    DeleteMethod = () => {
-        this.repository.deleteItem()
+    Delete = (id) => {
+       return this.repository.deleteItem(id)
     }
 }
 module.exports = BaseBl

@@ -5,9 +5,9 @@ const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') })
 
 aws.config.update({
-    secretAccessKey: process.env.cdnSecret,
-    accessKeyId: process.env.cdnID,
-    region: process.env.cdnRegion
+    secretAccessKey: process.env.CDNSECRET,
+    accessKeyId: process.env.CDNID,
+    region: process.env.CNDREGION
 })
 
 const s3 = new aws.S3()

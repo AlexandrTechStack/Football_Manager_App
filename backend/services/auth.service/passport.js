@@ -1,9 +1,10 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
-const keys = require('./passport_config')
 const User = require('../../models/user')
 const express = require('express')
 const LocalStrategy = require('passport-local').Strategy
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') })
 
 
 passport.serializeUser((user, done) => {
@@ -19,11 +20,11 @@ passport.deserializeUser((id, done) => {
 
 //Local Strategy
 passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.findOne({ login: username }, function (err, user) {
+    function(email, password, done) {
+        User.findOne({ email: email }, function (err, user) {
             if (err) { return done(err); }
             if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
+                return done(null, false, { message: 'Incorrect email.' });
             }
             if (!user.validPassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
@@ -39,8 +40,8 @@ passport.use(
     new GoogleStrategy({
         //options
         callbackURL: '/auth/google/redirect',
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientID: process.env.GOOGLECLIENTID,
+        clientSecret: process.env.GOOGLECLIENTSECRET
     }, (accessToken, refreshToken, profile, done) => {
         //checking if user already in db TEST BY name
         //dont forget ADD my costom function for geting the user by field!!!
