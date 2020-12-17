@@ -8,4 +8,4 @@ class TaskController extends Controller{
 
 }
 
-module.exports =  TaskController
+module.exports =  new TaskController()

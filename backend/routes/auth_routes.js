@@ -3,8 +3,14 @@ const router = express.Router()
 const passport = require('passport')
 const UserController = require('../controllers/user.controller')
 
-router.post('/signup', UserController.NewUser)
+router.post('/signup', UserController.Register)
+router.post('/login', UserController.Login)
 
+module.exports = router
+
+
+
+/*
 
 //Local
 router.get('/login', passport.authenticate('local', {
@@ -41,3 +47,4 @@ router.get('/google/redirect', passport.authenticate('google'), ((req, res) => {
 
 
 module.exports = router
+ */

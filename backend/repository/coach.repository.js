@@ -1,6 +1,11 @@
 const Repository = require('./repository')
 const Coach = require('../models/coach')
 
-let CoachRepository = new Repository(Coach)
+class CoachRepository extends Repository{
+    constructor() {
+        super(Coach);
+    }
 
-module.exports =  CoachRepository
+}
+
+module.exports = new CoachRepository

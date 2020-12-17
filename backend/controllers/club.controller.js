@@ -8,4 +8,4 @@ class ClubController extends Controller{
 
 }
 
-module.exports =  ClubController
+module.exports =  new ClubController()

@@ -1,11 +1,12 @@
 const express = require('express')
+const passport = require('passport')
 const userRouter = express.Router()
 const UserController = require('../controllers/user.controller')
 
 
-userRouter.get("/", UserController.Get)
+userRouter.get("/", passport.authenticate('jwt', {session: false}), UserController.Get)
 userRouter.get("/:id", UserController.GetById)
-userRouter.post("/:id", UserController.Post)
+userRouter.post("/add", UserController.Post)
 userRouter.put("/:id", UserController.Update)
 userRouter.delete("/:id", UserController.Delete)
 

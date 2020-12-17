@@ -1,6 +1,11 @@
 const Repository = require('./repository')
 const Task = require('../models/task')
 
-let TaskRepository = new Repository(Task)
+class TaskRepository extends Repository{
+    constructor() {
+        super(Task);
+    }
 
-module.exports =  TaskRepository
+}
+
+module.exports = new TaskRepository

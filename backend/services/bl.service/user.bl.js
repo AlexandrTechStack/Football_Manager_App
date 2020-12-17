@@ -5,7 +5,12 @@ class UserBl extends BaseBl{
     constructor() {
         super(UserRepository);
     }
-
+    isRegister = (body) => {
+        return this.repository.isRegister(body)
+    }
+    registerUser = (body) => {
+        return this.repository.registerUser(body)
+    }
 }
 
-module.exports = UserBl
+module.exports = new UserBl()

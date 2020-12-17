@@ -13,6 +13,10 @@ module.exports = {
                 type: DataTypes.STRING(30),
                 //allowNull: false
             },
+            //Test
+            password: {
+                type: DataTypes.STRING(100)
+            },
             firstName: {
                 type: DataTypes.STRING(15),
                 //allowNull: false
@@ -90,24 +94,13 @@ module.exports = {
             }),
             await queryInterface.createTable({schema: 'football_schema', tableName: 'Logins'}, {
                 provider: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
+                    type: DataTypes.STRING(15)
                 },
                 token: {
-                    type: DataTypes.STRING(30),
-                    //allowNull: false
-                },
-                login: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
-                },
-                password: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
+                    type: DataTypes.STRING(30)
                 },
                 UserId: {
-                    type: DataTypes.INTEGER,
-                    //allowNull: false
+                    type: DataTypes.INTEGER
                 }
             }, {
                 timestamps: false
@@ -116,12 +109,10 @@ module.exports = {
                 id: {
                     type: DataTypes.INTEGER,
                     autoIncrement: true,
-                    primaryKey: true,
-                    //allowNull: false
+                    primaryKey: true
                 },
                 qualify: {
-                    type: DataTypes.STRING(20),
-                    //allowNull: false
+                    type: DataTypes.STRING(20)
                 },
                 biography: {
                     type: DataTypes.STRING(200),

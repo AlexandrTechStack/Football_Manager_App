@@ -1,6 +1,11 @@
 const Repository = require('./repository')
 const Club = require('../models/club')
 
-let ClubRepository = new Repository(Club)
+class ClubRepository extends Repository{
+    constructor() {
+        super(Club);
+    }
 
-module.exports =  ClubRepository
+}
+
+module.exports = new ClubRepository

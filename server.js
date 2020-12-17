@@ -1,8 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const path = require('path')
 const sequelize = require('./backend/models')
-const passportConfig = require('./backend/services/auth.service/passport')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
 const bodyParser = require('body-parser');
@@ -32,6 +30,7 @@ app.use(cookieSession({
 }))
 
 app.use(passport.initialize())
+require('./backend/services/auth.service/passport')(passport)
 app.use(passport.session())
 
 

@@ -8,4 +8,4 @@ class CoachController extends Controller{
 
 }
 
-module.exports =  CoachController
+module.exports = new CoachController()

@@ -6,28 +6,22 @@ const Task = sequelize.define('Task', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+        primaryKey: true
     },
     description: {
-        type: DataTypes.STRING(15),
-        allowNull: false
+        type: DataTypes.STRING(15)
     },
     startAt: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATE
     },
     endAt: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATE
     },
     feedback: {
-        type: DataTypes.STRING(50),
-        allowNull: false
+        type: DataTypes.STRING(50)
     },
     mark: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.INTEGER
     }
 }, {
     schema: 'football_schema',
