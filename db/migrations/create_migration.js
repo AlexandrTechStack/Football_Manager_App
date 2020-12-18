@@ -66,6 +66,10 @@ module.exports = {
             CoachId: {
                 type: DataTypes.INTEGER,
                 //allowNull: false
+            },
+            LoginId: {
+                type: DataTypes.INTEGER,
+                //allowNull: false
             }
         }, {
             timestamps: false
@@ -93,11 +97,16 @@ module.exports = {
                 timestamps: false
             }),
             await queryInterface.createTable({schema: 'football_schema', tableName: 'Logins'}, {
+                id: {
+                    type: DataTypes.INTEGER,
+                    autoIncrement: true,
+                    primaryKey: true,
+                },
                 provider: {
                     type: DataTypes.STRING(15)
                 },
                 token: {
-                    type: DataTypes.STRING(30)
+                    type: DataTypes.STRING(100)
                 },
                 UserId: {
                     type: DataTypes.INTEGER

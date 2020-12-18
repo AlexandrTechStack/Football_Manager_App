@@ -6,6 +6,12 @@ class LoginBl extends BaseBl{
         super(LoginRepository);
     }
 
+    createLogin = (hash, id) => {
+        return LoginRepository.createLogin(hash, id)
+    }
+    findPassword = (candidate) => {
+        return LoginRepository.findPassword(candidate)
+}
 }
 
 module.exports = new LoginBl()

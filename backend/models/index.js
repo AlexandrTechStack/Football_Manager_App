@@ -19,8 +19,8 @@ Club.hasMany(Coach, )
 Coach.belongsTo(Club)
 
 
-User.belongsToMany(Login, {through: 'profile'}) //foreingKey?
-Login.belongsTo(User, {through: 'profile'})
+User.hasMany(Login, {foreignKey: 'UserId' }) //foreingKey?
+Login.belongsTo(User, )//{as:''}
 User.hasMany(Task, )
 Task.belongsTo(User)
 

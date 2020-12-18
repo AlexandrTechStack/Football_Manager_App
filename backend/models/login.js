@@ -3,6 +3,11 @@ const sequelize = require('./index')
 
 
 const Login = sequelize.define('Login', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
     provider: {
         type: DataTypes.STRING(15),
         //allowNull: false

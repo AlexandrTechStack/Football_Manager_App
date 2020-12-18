@@ -6,23 +6,14 @@ const Login = require('../models/login')
 
 class UserRepository extends Repository{
     constructor() {
-        super(User, [Club,Task]);
+        super(User, [Club,Task,Login]);
     }
     isRegister = (body) => {
         return this.model.findOne(body)
     }
     registerUser = (body) => {
-        return this.model.create({
-            body
-        }, {
-            include: Login
-        });
+        return this.model.create(body);
     }
-    /*
-    registerUser = (body) => {
-        return this.model.create(body)
-    }
-    */
 }
 
 module.exports = new UserRepository

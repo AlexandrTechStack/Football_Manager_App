@@ -2,6 +2,7 @@ const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
 const Controller = require('./controller')
 const UserBl = require('../services/bl.service/user.bl')
+const LoginBl = require('../services/bl.service/login.bl')
 const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
 
@@ -20,13 +21,12 @@ class UserController extends Controller {
         } else {
             const salt = bcrypt.genSaltSync(10)
             const password = req.body.password
-            this.Bl.registerUser({
+            const hash = bcrypt.hashSync(password, salt)
+            const user = await this.Bl.registerUser({
                 email: req.body.email,
-                logins: {
-                    provider: 'local',
-                    token: bcrypt.hashSync(password, salt)
-                }
+                //password: bcrypt.hashSync(password, salt),
             })
+            await LoginBl.createLogin(hash, user.id)
         }
         try {
             res.json('Added')
@@ -37,9 +37,10 @@ class UserController extends Controller {
     Login = async (req, res) => {
         const candidate = await this.Bl.isRegister({where: {email: req.body.email}})
         if (candidate) {
-            const passwordResult = bcrypt.compareSync(req.body.password, candidate.password)
+            const realpassword = await LoginBl.findPassword(candidate)
+            const passwordResult = bcrypt.compareSync(req.body.password, realpassword.token)//candidate.password
             if(passwordResult){
-                //token generate
+
                 const token = jwt.sign({
                     email: candidate.email,
                     userId: candidate.id
@@ -62,3 +63,14 @@ class UserController extends Controller {
 }
 
 module.exports = new UserController()
+
+
+/*
+            const realpassword = await Login.findOne({
+                where: {provider: 'local'},
+                include: [{
+                    model: User,
+                    where: { id: candidate.id } //
+                }]
+            })
+            */

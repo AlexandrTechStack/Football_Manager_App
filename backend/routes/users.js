@@ -4,10 +4,10 @@ const userRouter = express.Router()
 const UserController = require('../controllers/user.controller')
 
 
-userRouter.get("/", passport.authenticate('jwt', {session: false}), UserController.Get)
+userRouter.get("/", UserController.Get)
 userRouter.get("/:id", UserController.GetById)
 userRouter.post("/add", UserController.Post)
-userRouter.put("/:id", UserController.Update)
+userRouter.put("/:id", passport.authenticate('jwt', {session: false}), UserController.Update)
 userRouter.delete("/:id", UserController.Delete)
 
 module.exports = userRouter
