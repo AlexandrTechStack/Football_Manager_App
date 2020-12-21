@@ -1,8 +1,20 @@
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') })
 const User = require('../../models/user')
+const Login = require("../../models/login");
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20')
+
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 
 const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -12,7 +24,7 @@ module.exports = (passport) => {
     passport.use(
         new JwtStrategy(options, async (payload, done) => {
             try{
-                const user = await User.findByPk(payload.userId).select('email id')
+                const user = await User.findByPk(payload.userId)
 
                 if(user) {
                     done(null, user)
@@ -26,6 +38,44 @@ module.exports = (passport) => {
         })
     )
 }
+
+
+
+//Strategy
+passport.use(
+    new GoogleStrategy({
+        //options
+        callbackURL: '/auth/google/redirect',
+        clientID: process.env.GOOGLECLIENTID,
+        clientSecret: process.env.GOOGLECLIENTSECRET
+    }, async (accessToken, refreshToken, profile, done) => {
+        //checking if user already in db TEST BY name
+        //dont forget ADD my costom function for geting the user by field!!!
+        await User.findOne({
+            where: {email: profile.emails[0].value}
+        }).then( async (currentUser) => {
+                if (currentUser) {
+                    //already have user
+                    console.log('user is: ', currentUser)
+                    done(null, currentUser)
+                } else {
+                    const user = await User.create({
+                        email: profile.emails[0].value
+                    })
+                    await Login.create({
+                        provider: 'google',
+                        token: profile.id,
+                        UserId: user.id
+                    }).then((newUser) => {
+                            console.log('User added')
+                            done(null, newUser)
+                        })
+                }
+
+            })
+        console.log(profile)
+    })
+)
 
 
 
@@ -53,22 +103,6 @@ passport.deserializeUser((id, done) => {
             done(null,user)
         })
 })
-
-//Local Strategy
-passport.use(new LocalStrategy(
-    function(email, password, done) {
-        User.findOne({ email: email }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect email.' });
-            }
-            if (!user.validPassword(password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-    }
-));
 
 
 //Google Strategy
@@ -102,4 +136,13 @@ passport.use(
         console.log(profile)
     })
 )
+
+//maybee Usefull
+Login.findOne({
+            where: {token: profile.id},
+            include: [{
+                model: User,
+                where: {email: profile.emails[0].value} //
+            }]
+        })
  */

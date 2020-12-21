@@ -5,6 +5,18 @@ const UserController = require('../controllers/user.controller')
 
 router.post('/signup', UserController.Register)
 router.post('/login', UserController.Login)
+//OAuth
+router.get('/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+}))
+router.get('/google/redirect', passport.authenticate('google'), ((req, res) => {
+    res.redirect('/')
+    res.send(req.user.firstName + ' Welcome!')
+}))
+router.get('/logout', (req, res) => {
+    req.logout()
+    res.redirect('/')
+})
 
 module.exports = router
 
