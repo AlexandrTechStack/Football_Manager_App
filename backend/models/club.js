@@ -7,19 +7,19 @@ const Club = sequelize.define('Club', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
+        //allowNull: false
     },
     name: {
         type: DataTypes.STRING(15),
-        allowNull: false
+        //allowNull: false
     },
     address: {
         type: DataTypes.STRING(50),
-        allowNull: false
+        //allowNull: false
     },
     photoURL: {
         type: DataTypes.STRING(30),
-        allowNull: false
+        //allowNull: false
     }
 }, {
     schema: 'football_schema',

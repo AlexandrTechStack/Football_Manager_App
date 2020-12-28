@@ -5,12 +5,16 @@ const userRouter = express.Router()
 const UserController = require('../controllers/user.controller')
 
 
-userRouter.get("/", (req, res) => {
-    return AuthRole(req, res, 'admin')
-}, UserController.Get)//[google]
+userRouter.get("/",  UserController.Get)//[google]
 userRouter.get("/:id", UserController.GetById)
 userRouter.post("/add", UserController.Post)
-userRouter.put("/:id", passport.authenticate('jwt', {session: false}), UserController.Update)
+userRouter.put("/:id",  UserController.Update) //passport.authenticate('jwt', {session: false}),
 userRouter.delete("/:id", UserController.Delete)
 
 module.exports = userRouter
+/*
+//MW
+(req, res) => {
+    return AuthRole(req, res, 'admin')
+},
+ */

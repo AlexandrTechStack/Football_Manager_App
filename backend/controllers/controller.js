@@ -6,6 +6,7 @@ class Controller {
 
     Get = (req, res) => {
         return this.Bl.Get()
+            .then(value => res.json(value))
             .then(value => {
                 console.log(value)
                 res.sendStatus(200)
@@ -15,6 +16,7 @@ class Controller {
 
     GetById = (req, res) => {
         return this.Bl.GetById(req.params.id)
+            .then(value => res.json(value))
             .then(value => {
                 console.log(value)
                 res.sendStatus(200)

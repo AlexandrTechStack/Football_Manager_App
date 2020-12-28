@@ -1,10 +1,9 @@
-//const uploadImage = require('../services/cdn.service/image_upload')
-const UserImageUpload = require('../services/cdn.service/user_image_upload')
-const ClubImageUpload = require('../services/cdn.service/club_image_upload')
+const ClubBl = require('../services/bl.service/club.bl')
+const UserBl = require('../services/bl.service/user.bl')
 
 const UserImageController = async (req, res) => {
     try {
-        const result = await UserImageUpload.uploadImage(req, res)
+        const result = await UserBl.ImageUpload.uploadImage(req, res)
         console.log('file:', result)
         return res.json(result)
     } catch (err) {
@@ -13,7 +12,7 @@ const UserImageController = async (req, res) => {
 }
 const ClubImageController = async (req, res) => {
     try {
-        const result = await ClubImageUpload.uploadImage(req, res)
+        const result = await ClubBl.ImageUpload.uploadImage(req, res)
         console.log('file:', result)
         return res.json(result)
     } catch (err) {

@@ -1,23 +1,44 @@
-import {React, Component} from 'react'
+import React from 'react'
 import {observer, inject} from "mobx-react"
-import {BrowserRouter as Router, Route} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 @inject("mainStore")
 @observer
-class Profile extends Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props);
     };
 
     render() {
-        const mainStore = this.props.mainStore;
 
         return (
             <div className='container'>
-                <h1>Profile</h1>
+                <h1>Admin Profile</h1>
+                <div>
+                    <div className="card">
+                        <div className="media">
+                            <img src="" className="mr-3" alt="..."/>
+                        </div>
+                        <div className="card-body">
+                            <h5 className="card-title">Александр Тарабанов</h5>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Email</li>
+                                <li className="list-group-item">Birthday</li>
+                                <li className="list-group-item">Address</li>
+                                <li className="list-group-item">Phone</li>
+                                <li className="list-group-item">isApproved</li>
+                                <li className="list-group-item">isPrime</li>
+                                <li className="list-group-item">Salary</li>
+                            </ul>
+                            <div className="card-body">
+                                <a href="#" className="card-link">Update profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
+
 export default Profile

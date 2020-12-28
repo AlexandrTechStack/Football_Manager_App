@@ -5,7 +5,7 @@ const TaskController = require('../controllers/task.controller')
 
 taskRouter.get("/",TaskController.Get)
 taskRouter.get("/:id",TaskController.GetById)
-taskRouter.post("/:id",TaskController.Post)
+taskRouter.post("/add",TaskController.Post)
 taskRouter.put("/:id",TaskController.Update)
 taskRouter.delete("/:id",TaskController.Delete)
 
