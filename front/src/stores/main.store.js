@@ -3,7 +3,7 @@
 
 export default class mainStore {
     constructor() {
-        //Инициализация дочерних хранилищ
+        this.ProfileStore = new ProfileStore
     }
 }
 
