@@ -20,7 +20,7 @@ class UsersUpdate extends Component {
         this.state = {
             email: '',
             firstName: '',
-            lastName: '',
+            lastName: '',//this.props.UsersStore.lastName
             birthDate: '',
             photoURL: '',
             phone: '',
@@ -28,12 +28,12 @@ class UsersUpdate extends Component {
             isPrime: '',
             salary: '',
             currentRole: '',
-            currentId: ''
+            currentId: this.props.UsersStore.userById
         }
     }
-    async componentDidMount() {
-        await this.props.UsersStore.getUsersById(this.props.UsersStore.currentId)
-        await console.log(this.props.UsersStore.userById)
+    componentDidMount() {
+        this.props.UsersStore.getUsersById(this.props.UsersStore.currentId)
+        console.log(this.props.UsersStore.userById)
     }
 
     onChangeUserEmail(e) {
@@ -98,7 +98,7 @@ class UsersUpdate extends Component {
             currentRole: this.state.currentRole,
         }
         console.log(newuser)
-        this.props.ClubsStore.addClub(newuser)
+        this.props.UsersStore.updateUser(newuser, this.props.UsersStore.currentId)
 
         //window.location = '/clubs';
     }
@@ -116,7 +116,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User Email</label>
                                 <input type="text"
-                                       required
                                        value={this.state.email}
                                        onChange={this.onChangeUserEmail}
                                        className="form-control"/>
@@ -124,7 +123,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User First Name</label>
                                 <input type="text"
-                                       required
                                        value={this.state.firstName}
                                        onChange={this.onChangeUserFirstName}
                                        className="form-control"/>
@@ -132,7 +130,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User Last Name</label>
                                 <input type="text"
-                                       required
                                        value={this.state.lastName}
                                        onChange={this.onChangeUserLastName}
                                        className="form-control"/>
@@ -140,7 +137,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User Birthday</label>
                                 <input type="text"
-                                       required
                                        value={this.state.birthDate}
                                        onChange={this.onChangeUserBirthDate}
                                        className="form-control"/>
@@ -148,7 +144,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User Phone</label>
                                 <input type="text"
-                                       required
                                        value={this.state.phone}
                                        onChange={this.onChangeUserPhone}
                                        className="form-control"/>
@@ -156,7 +151,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User isApproved</label>
                                 <input type="text"
-                                       required
                                        value={this.state.isApproved}
                                        onChange={this.onChangeUserIsApproved}
                                        className="form-control"/>
@@ -164,7 +158,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User isPrime</label>
                                 <input type="text"
-                                       required
                                        value={this.state.isPrime}
                                        onChange={this.onChangeUserIsPrime}
                                        className="form-control"/>
@@ -172,7 +165,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label>User Salary</label>
                                 <input type="text"
-                                       required
                                        value={this.state.salary}
                                        onChange={this.onChangeUserSalary}
                                        className="form-control"/>
@@ -180,7 +172,6 @@ class UsersUpdate extends Component {
                             <div className="form-group col-md-3">
                                 <label htmlFor="inputState">User Role</label>
                                 <select type='text'
-                                        required
                                         value={this.state.currentRole}
                                         onChange={this.onChangeUserCurrentRole}
                                         className="form-control">

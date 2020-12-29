@@ -6,15 +6,11 @@ const User = sequelize.define('User', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
+        //allowNull: false
     },
     email: {
         type: DataTypes.STRING(30),
         //allowNull: false
-    },
-    //Test
-    password: {
-        type: DataTypes.STRING(100)
     },
     firstName: {
         type: DataTypes.STRING(15),

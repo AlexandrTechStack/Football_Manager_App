@@ -24,7 +24,7 @@ class UsersStore {
     //For Get All
     @observable users = []
     //For Get By ID
-    @observable userById = []
+    @observable userById = ''
 
 
     @action getUsers() {
