@@ -5,28 +5,22 @@ const Coach = sequelize.define('Coach', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+        primaryKey: true
     },
     qualify: {
-        type: DataTypes.STRING(20),
-        allowNull: false
+        type: DataTypes.STRING(20)
     },
     biography: {
-        type: DataTypes.STRING(200),
-        allowNull: false
+        type: DataTypes.STRING(200)
     },
     onPosition: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATE
     },
     type: {
-        type: DataTypes.STRING(15),
-        allowNull: false
+        type: DataTypes.STRING(15)
     },
     isHead: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
+        type: DataTypes.BOOLEAN
     }
 }, {
     schema: 'football_schema',

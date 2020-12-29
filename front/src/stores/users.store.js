@@ -30,7 +30,6 @@ class UsersStore {
     @action getUsers() {
         axios.get('http://localhost:3001/users/')
             .then(response => {
-                //this.user.users = response.data
                 this.users = response.data
             })
             .catch((error) => {

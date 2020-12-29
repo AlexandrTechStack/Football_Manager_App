@@ -35,14 +35,13 @@ class Users extends Component {
                     <table className="table">
                         <thead className="thead-light">
                         <tr>
+                            <th>Photo</th>
                             <th>Email</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Birthday</th>
                             <th>Address</th>
                             <th>Phone</th>
-                            <th>isApproved</th>
-                            <th>isPrime</th>
                             <th>Salary</th>
                             <th>Role</th>
                         </tr>

@@ -12,10 +12,10 @@ const Task = sequelize.define('Task', {
         type: DataTypes.STRING(15)
     },
     startAt: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     endAt: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     feedback: {
         type: DataTypes.STRING(50)

@@ -39,6 +39,7 @@ class Clubs extends Component {
                     <table className="table">
                         <thead className="thead-light">
                         <tr>
+                            <th>Photo</th>
                             <th>Name</th>
                             <th>Address</th>
                         </tr>

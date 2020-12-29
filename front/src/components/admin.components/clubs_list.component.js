@@ -19,6 +19,7 @@ class ClubsList extends Component {
         const Club = this.props.Club
         return (
             <tr>
+                <td><img src={Club.photoURL} style = {{width:60, height: 40}}/></td>
                 <td>{Club.name}</td>
                 <td>{Club.address}</td>
                 <td>

@@ -6,70 +6,51 @@ module.exports = {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
-                primaryKey: true,
-                //allowNull: false
+                primaryKey: true
             },
             email: {
-                type: DataTypes.STRING(50),
-                //allowNull: false
-            },
-            //Test
-            password: {
-                type: DataTypes.STRING(100)
+                type: DataTypes.STRING(50)
             },
             firstName: {
-                type: DataTypes.STRING(15),
-                //allowNull: false
+                type: DataTypes.STRING(15)
             },
             lastName: {
-                type: DataTypes.STRING(20),
-                //allowNull: false
+                type: DataTypes.STRING(20)
             },
             birthDate: {
-                type: DataTypes.DATE,
-                //allowNull: false
+                type: DataTypes.DATEONLY
             },
             address: {
-                type: DataTypes.STRING(50),
-                //allowNull: false
+                type: DataTypes.STRING(50)
             },
             photoURL: {
-                type: DataTypes.STRING(100),
-                //allowNull: false
+                type: DataTypes.STRING(100)
             },
             phone: {
-                type: DataTypes.STRING(20),
-                //allowNull: false
+                type: DataTypes.STRING(20)
             },
             isApproved: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false
-                //allowNull: false
             },
             isPrime: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false
-                //allowNull: false
             },
             salary: {
-                type: DataTypes.INTEGER,
-                //allowNull: false
+                type: DataTypes.INTEGER
             },
             currentRole: {
-                type: DataTypes.ENUM('admin', 'player', 'coach'),
-                //allowNull: false
+                type: DataTypes.ENUM('admin', 'player', 'coach')
             },
             ClubId: {
-                type: DataTypes.INTEGER,
-                //allowNull: false
+                type: DataTypes.INTEGER
             },
             CoachId: {
-                type: DataTypes.INTEGER,
-                //allowNull: false
+                type: DataTypes.INTEGER
             },
             LoginId: {
-                type: DataTypes.INTEGER,
-                //allowNull: false
+                type: DataTypes.INTEGER
             }
         }, {
             timestamps: false
@@ -78,20 +59,22 @@ module.exports = {
                 id: {
                     type: DataTypes.INTEGER,
                     autoIncrement: true,
-                    primaryKey: true,
-                    //allowNull: false
+                    primaryKey: true
                 },
                 name: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
+                    type: DataTypes.STRING(15)
                 },
                 address: {
-                    type: DataTypes.STRING(50),
-                    //allowNull: false
+                    type: DataTypes.STRING(50)
                 },
                 photoURL: {
-                    type: DataTypes.STRING(100),
-                    //allowNull: false
+                    type: DataTypes.STRING(100)
+                },
+                UserId: {
+                    type: DataTypes.INTEGER
+                },
+                UserId: {
+                    type: DataTypes.INTEGER
                 }
             }, {
                 timestamps: false
@@ -124,25 +107,20 @@ module.exports = {
                     type: DataTypes.STRING(20)
                 },
                 biography: {
-                    type: DataTypes.STRING(200),
-                    //allowNull: false
+                    type: DataTypes.STRING(200)
                 },
                 onPosition: {
-                    type: DataTypes.DATE,
-                    //allowNull: false
+                    type: DataTypes.DATEONLY
                 },
                 type: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
+                    type: DataTypes.STRING(15)
                 },
                 isHead: {
                     type: DataTypes.BOOLEAN,
                     defaultValue: false
-                    //allowNull: false
                 },
                 ClubId: {
-                    type: DataTypes.INTEGER,
-                    //allowNull: false
+                    type: DataTypes.INTEGER
                 }
             }, {
                 timestamps: false
@@ -151,32 +129,25 @@ module.exports = {
                 id: {
                     type: DataTypes.INTEGER,
                     autoIncrement: true,
-                    primaryKey: true,
-                    //allowNull: false
+                    primaryKey: true
                 },
                 description: {
-                    type: DataTypes.STRING(15),
-                    //allowNull: false
+                    type: DataTypes.STRING(15)
                 },
                 startAt: {
-                    type: DataTypes.DATE,
-                    //allowNull: false
+                    type: DataTypes.DATEONLY
                 },
                 endAt: {
-                    type: DataTypes.DATE,
-                    //allowNull: false
+                    type: DataTypes.DATEONLY
                 },
                 feedback: {
-                    type: DataTypes.STRING(50),
-                    //allowNull: false
+                    type: DataTypes.STRING(50)
                 },
                 mark: {
-                    type: DataTypes.INTEGER,
-                    //allowNull: false
+                    type: DataTypes.INTEGER
                 },
                 UserId: {
-                    type: DataTypes.INTEGER,
-                    //allowNull: false
+                    type: DataTypes.INTEGER
                 }
             }, {
                 timestamps: false
@@ -191,26 +162,3 @@ module.exports = {
         await queryInterface.dropTable('Tasks')
     }
 };
-
-
-/*module.exports = {
-    up: (queryInterface, Sequelize) => {
-        return (
-            queryInterface.createTable(User.tableName, User._attributes),
-                queryInterface.createTable(Club.tableName, Club._attributes),
-                queryInterface.createTable(Coach.tableName, Coach._attributes),
-                queryInterface.createTable(Task.tableName, Task._attributes),
-                queryInterface.createTable(Login.tableName, Login._attributes)
-        )
-
-    },
-    down: (queryInterface) => {
-        return (
-            queryInterface.dropTable('User'),
-                queryInterface.dropTable('Club'),
-                queryInterface.dropTable('Coach'),
-                queryInterface.dropTable('Task'),
-                queryInterface.dropTable('Login')
-        )
-    }
-};*/

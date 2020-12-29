@@ -7,26 +7,27 @@ import {Link} from "react-router-dom";
 class UsersList extends Component {
     constructor(props) {
         super(props);
-        const state = {
-            currentId: ''
+        this.state = {
+            users: this.props.UsersStore.users
         }
     }
     componentDidMount() {
         this.props.UsersStore.getUsers()
+       //this.setState({users: this.props.UsersStore.getUsers()})
     }
 
     render() {
         const User = this.props.User
+        console.log(this.state)
         return (
                 <tr>
+                    <td><img src={User.photoURL} style = {{width:60, height: 40}}/></td>
                     <td>{User.email}</td>
                     <td>{User.firstName}</td>
                     <td>{User.lastName}</td>
                     <td>{User.birthDate}</td>
-                    <td>{User.photoURL}</td>
+                    <td>{User.address}</td>
                     <td>{User.phone}</td>
-                    <td>{User.isApproved}</td>
-                    <td>{User.isPrime}</td>
                     <td>{User.salary}</td>
                     <td>{User.currentRole}</td>
                     <td>

@@ -39,7 +39,6 @@ class ClubsStore {
             });
     }
     @action addClub = (newclub) => {
-
         axios.post('http://localhost:3001/clubs/add', newclub)
             .then(response => {
                 console.log(response.data)

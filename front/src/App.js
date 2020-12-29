@@ -23,11 +23,9 @@ class Auth extends React.Component {
             <Router>
                 <Link to="/sign_up" className="navbar-brand">Sign Up</Link>
                 <Link to="/sign_in" className="navbar-brand">Sign In</Link>
-                <Link to="/profile" className="navbar-brand">Profile</Link>
                 <div className='container'>
                     <Route path='/sign_up' exect component={SignUp}/>
                     <Route path='/sign_in' exect component={SignIn}/>
-                    <Route path='/profile' exect component={Profile}/>
                 </div>
             </Router>
         </div>
@@ -35,16 +33,3 @@ class Auth extends React.Component {
   }
 }
 export default Auth
-
-
-
-/*
- <Link to="/sign_up" className="navbar-brand">Sign Up</Link>
-            <Link to="/sign_in" className="navbar-brand">Sign In</Link>
-          <Router>
-            <div className='container'>
-              <Route path='/sign_up' exect component={SignUp}/>
-              <Route path='/sign_in' exect component={SignIn}/>
-            </div>
-          </Router>
- */

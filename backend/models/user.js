@@ -6,51 +6,39 @@ const User = sequelize.define('User', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        //allowNull: false
     },
     email: {
-        type: DataTypes.STRING(30),
-        //allowNull: false
+        type: DataTypes.STRING(30)
     },
     firstName: {
-        type: DataTypes.STRING(15),
-        //allowNull: false
+        type: DataTypes.STRING(15)
     },
     lastName: {
-        type: DataTypes.STRING(20),
-        //allowNull: false
+        type: DataTypes.STRING(20)
     },
     birthDate: {
-        type: DataTypes.DATE,
-        //allowNull: false
+        type: DataTypes.DATEONLY
     },
     address: {
-        type: DataTypes.STRING(50),
-        //allowNull: false
+        type: DataTypes.STRING(50)
     },
     photoURL: {
-        type: DataTypes.STRING(100),
-        //allowNull: false
+        type: DataTypes.STRING(100)
     },
     phone: {
-        type: DataTypes.STRING(20),
-        //allowNull: false
+        type: DataTypes.STRING(20)
     },
     isApproved: {
-        type: DataTypes.BOOLEAN,
-        //allowNull: false
+        type: DataTypes.BOOLEAN
     },
     isPrime: {
-        type: DataTypes.BOOLEAN,
-        //allowNull: false
+        type: DataTypes.BOOLEAN
     },
     salary: {
-        type: DataTypes.INTEGER,
-        //allowNull: false
+        type: DataTypes.INTEGER
     },
     currentRole: {
-        type: DataTypes.ENUM('admin','player', 'coach'),
-        //allowNull: false
+        type: DataTypes.ENUM('admin','player', 'coach')
     }
 }, {
     sequelize,

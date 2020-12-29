@@ -15,17 +15,17 @@ const Login = require('./login')
 
 //associates
 
-Club.hasMany(User, )
+Club.hasMany(User, {foreignKey: 'ClubId' })
 User.belongsTo(Club)
-Club.hasMany(Coach, )
+Club.hasMany(Coach)
 Coach.belongsTo(Club)
 
 
-User.hasMany(Login, {foreignKey: 'UserId' }) //foreingKey?
-Login.belongsTo(User, )//{as:''}
-User.hasMany(Task, )
+User.hasMany(Login, {foreignKey: 'UserId' })
+Login.belongsTo(User)
+User.hasMany(Task)
 Task.belongsTo(User)
 
 
-Coach.hasOne(User, )
+Coach.hasOne(User)
 User.belongsTo(Coach)
